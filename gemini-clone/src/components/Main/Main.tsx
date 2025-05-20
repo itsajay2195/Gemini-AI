@@ -1,6 +1,7 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "./Main.css";
 import { assets } from "../../assets/assets";
+import runChat from "../../config/gemini";
 
 const Main = () => {
   return (
