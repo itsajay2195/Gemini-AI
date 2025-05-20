@@ -16,6 +16,7 @@ const Main = () => {
     setShowResult,
     resultData,
     setResultData,
+    loading,
   }: any = useContext(GeminiContext);
 
   return (
@@ -25,27 +26,50 @@ const Main = () => {
         <img className="menu" src={assets.user_icon} alt="" />
       </div>
       <div className="main-container">
-        <div className="greet">
-          <p>
-            <span>Hello, User</span>
-            <p>How can I help you today?</p>
-          </p>
-        </div>
+        {!showResult ? (
+          <>
+            <div className="greet">
+              <p>
+                <span>Hello, User</span>
+                <p>How can I help you today?</p>
+              </p>
+            </div>
 
-        <div className="cards">
-          <div className="card">
-            <p>Suggest some beautiful places</p>
-            <img className="menu" src={assets.compass_icon} alt="" />
+            <div className="cards">
+              <div className="card">
+                <p>Suggest some beautiful places</p>
+                <img className="menu" src={assets.compass_icon} alt="" />
+              </div>
+              <div className="card">
+                <p>what is the weather in Chennai today?</p>
+                <img className="menu" src={assets.compass_icon} alt="" />
+              </div>
+              <div className="card">
+                <p>What is the op trading strategy today?</p>
+                <img className="menu" src={assets.compass_icon} alt="" />
+              </div>
+            </div>
+          </>
+        ) : (
+          <div className="result">
+            <div className="result-title">
+              <img src={assets.user_icon}></img>
+              <p>{recentPrompt}</p>
+            </div>
+            <div className="result-data">
+              <img src={assets.gemini_icon}></img>
+              {loading ? (
+                <div className="loader">
+                  <hr></hr>
+                  <hr></hr>
+                  <hr></hr>
+                </div>
+              ) : (
+                <p dangerouslySetInnerHTML={{ __html: resultData }}></p>
+              )}
+            </div>
           </div>
-          <div className="card">
-            <p>what is the weather in Chennai today?</p>
-            <img className="menu" src={assets.compass_icon} alt="" />
-          </div>
-          <div className="card">
-            <p>What is the op trading strategy today?</p>
-            <img className="menu" src={assets.compass_icon} alt="" />
-          </div>
-        </div>
+        )}
 
         <div className="main-bottom">
           <div className="search-box">
