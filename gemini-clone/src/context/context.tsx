@@ -1,4 +1,4 @@
-import { createContext, useCallback, useEffect, useState } from "react";
+import { createContext, useCallback, useState } from "react";
 import { callGeminiApiWithFetch } from "../config/gemini";
 
 export const GeminiContext: any = createContext({});
@@ -17,7 +17,7 @@ const ContextProvider = (props: any) => {
     }, 75 * index);
   }, []);
 
-  const newChat = useCallback((index: any, nextWord: string) => {
+  const newChat = useCallback(() => {
     setLoading(false);
     setShowResult(false);
   }, []);

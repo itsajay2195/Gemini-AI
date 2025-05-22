@@ -2,8 +2,6 @@
 // npm install @google/genai mime
 // npm install -D @types/node
 
-import { GoogleGenAI } from "@google/genai";
-
 function delay(ms: number) {
   return new Promise((resolve) => setTimeout(resolve, ms));
 }

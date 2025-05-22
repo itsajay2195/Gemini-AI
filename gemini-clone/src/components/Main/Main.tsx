@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from "react";
+import { useContext } from "react";
 import "./Main.css";
 import { assets } from "../../assets/assets";
 import { GeminiContext } from "../../context/context";
@@ -9,13 +9,8 @@ const Main = () => {
     setInput,
     onSent,
     recentPrompt,
-    setRecentPrompt,
-    previousPrompts,
-    setPreviousPrompts,
     showResult,
-    setShowResult,
     resultData,
-    setResultData,
     loading,
   }: any = useContext(GeminiContext);
 
