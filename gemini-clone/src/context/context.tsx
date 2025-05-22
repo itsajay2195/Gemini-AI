@@ -16,6 +16,11 @@ const ContextProvider = (props: any) => {
       setResultData((prev: any) => prev + nextWord);
     }, 75 * index);
   }, []);
+
+  const newChat = useCallback((index: any, nextWord: string) => {
+    setLoading(false);
+    setShowResult(false);
+  }, []);
   const onSent = useCallback(async (prompt: string, isPrevPrompt = false) => {
     setResultData("");
     setLoading(true);
@@ -56,6 +61,7 @@ const ContextProvider = (props: any) => {
     setResultData,
     onSent,
     loading,
+    newChat,
   };
 
   return (

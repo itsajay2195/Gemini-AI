@@ -5,7 +5,7 @@ import { GeminiContext } from "../../context/context";
 
 const Sidebar = () => {
   const [extended, setExtened] = useState(false);
-  const { onSent, setRecentPrompt, previousPrompts }: any =
+  const { onSent, setRecentPrompt, previousPrompts, newChat }: any =
     useContext(GeminiContext);
 
   const loadPrompt = useCallback(async (prompt: string) => {
@@ -22,8 +22,8 @@ const Sidebar = () => {
           src={assets.menu_icon}
           alt=""
         />
-        <div className="new-chat">
-          <img className="menu" src={assets.plus_icon} alt="" />
+        <div onClick={newChat} className="new-chat">
+          <img src={assets.plus_icon} alt="" />
           {extended ? <p>New Chat</p> : null}
         </div>
         {extended ? (
