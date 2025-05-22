@@ -42,11 +42,11 @@ const Main = () => {
               </div>
               <div className="card">
                 <p>what is the weather in Chennai today?</p>
-                <img className="menu" src={assets.compass_icon} alt="" />
+                <img className="menu" src={assets.bulb_icon} alt="" />
               </div>
               <div className="card">
                 <p>What is the op trading strategy today?</p>
-                <img className="menu" src={assets.compass_icon} alt="" />
+                <img className="menu" src={assets.message_icon} alt="" />
               </div>
             </div>
           </>
@@ -80,13 +80,15 @@ const Main = () => {
               placeholder="Enter a prompt here"
             />
             <div>
-              <img src={assets.gallery_icon} alt="" />
-              <img src={assets.mic_icon} alt="" />
-              <img
-                onClick={() => onSent(input)}
-                src={assets.send_icon}
-                alt=""
-              />
+              {/* <img src={assets.gallery_icon} alt="" />
+              <img src={assets.mic_icon} alt="" /> */}
+              {input?.length > 0 && (
+                <img
+                  onClick={() => onSent(input)}
+                  src={assets.send_icon}
+                  alt=""
+                />
+              )}
             </div>
           </div>
           <p className="bottom-info">

@@ -1,9 +1,17 @@
-import React, { useState } from "react";
+import { useCallback, useContext, useState } from "react";
 import "./Sidebar.css";
 import { assets } from "../../assets/assets";
+import { GeminiContext } from "../../context/context";
 
 const Sidebar = () => {
   const [extended, setExtened] = useState(false);
+  const { onSent, setRecentPrompt, previousPrompts, newChat }: any =
+    useContext(GeminiContext);
+
+  const loadPrompt = useCallback(async (prompt: string) => {
+    setRecentPrompt(prompt);
+    await onSent(prompt, true);
+  }, []);
 
   return (
     <div className="sidebar">
@@ -14,17 +22,23 @@ const Sidebar = () => {
           src={assets.menu_icon}
           alt=""
         />
-        <div className="new-chat">
-          <img className="menu" src={assets.plus_icon} alt="" />
+        <div onClick={newChat} className="new-chat">
+          <img src={assets.plus_icon} alt="" />
           {extended ? <p>New Chat</p> : null}
         </div>
         {extended ? (
           <div className="recent">
             <p className="recent-title">Recent</p>
-            <div className="recent-entry">
-              <img src={assets.message_icon} alt="" />
-              <p>What is react...</p>
-            </div>
+            {previousPrompts?.map((item: any, index: any) => (
+              <div
+                onClick={() => loadPrompt(item)}
+                key={item + index?.toString()}
+                className="recent-entry"
+              >
+                <img src={assets.message_icon} alt="" />
+                <p>{item?.slice(0, 18)}...</p>
+              </div>
+            ))}
           </div>
         ) : null}
       </div>
